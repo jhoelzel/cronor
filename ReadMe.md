@@ -21,6 +21,8 @@ This is exactly what this program does:
 - Distroless container image for the cronjob. (the entire container is only 31mb and those are mostly dependencies)
 - In the makefile I am linking my local microk8s container registry, you will have to replace it if you want to build the image.
 - the kubeconfig is either given as a flag, simply in your homedir or even incluster configuration can be used, so this simply executes "in cloud".
+- versioning for your containers
+- versioning for your app applied when its build through ldflags
 - Makefile for testing and deployment locally, which includes a lot of goodies like kube-apply, docker image building and much more:
 
 ```
@@ -75,7 +77,8 @@ If you have used the defaults without changing anything you will find the servic
 ## What are you running this on?
 
 Locally I am developing in one of my alpine dev containers.
-My kubernetes distribution if choice for local development is microk8s because its simple to use and with metallb plays very well with my openwrt router.
+My kubernetes distribution of choice for local development is microk8s because its simple to use and with metallb plays very well with my OpenWRT router.
+I dont like to run workloads directly on my surfacebook therefore I have a seperate Server in my network where everything runs on. With a Wireguard tunnel on OpenWRT I have no problems when I am in the green office either ;)
 
 Versions:
 ```
