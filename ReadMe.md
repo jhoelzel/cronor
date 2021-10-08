@@ -1,8 +1,8 @@
 # Cronor
 
-Cronor is a kubernetes cron job image with one task: change our deployment depending its day or night.
+Cronor is a kubernetes cron job image with one task: change our deployment depending if it's day or night.
 This is a showcase of how easily the kubernetes api can be implemented directly into your code in multiple ways.
-I chose the cronjob because it is perfect for our scenario: once an hour check if our deployment is correctly scaled and deployed.
+I chose the cronjob because it is perfect for our scenario: once an hour check if our deployment is correctly scaled and deployed, but the packages could easily be implemented in other applications like webapplications, GRPC servers and more.
 
 ## What does it do?
 
@@ -12,7 +12,7 @@ This is exactly what this program does:
 - Check if our Namespace exist. If not create it.
 - Check if our Deployment exists. If not create it.
 - If our deployment exists: do we need to scale it up because its during the day?
-- If our deployment exists: do we need to scale it down because its during the day?
+- If our deployment exists: do we need to scale it down because its during the night?
 - Along with everything: make sure our namespace atually exists.
 
 ## What is it build with
@@ -63,7 +63,7 @@ The cronjob deploys the simpleapp container that I use for trainings. You can fi
 ## How do we access the deployment?
 
 With:
-kubectl get service -n <yournamespace>
+kubectl get service -n "{{.APP_NAME}}-loadbalancer-service"
 You will reveal the load balancer that this project shedules.
 If you have used the defaults without changing anything you will find the service as "my-supercool-deployment-loadblancer-service" and the deployment as "my-supercool-deployment"
 

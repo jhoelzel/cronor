@@ -4,12 +4,13 @@ metadata:
   name: cron-cronor
 spec:
   schedule: "0 * * * *"
+  successfulJobsHistoryLimit: 0
   jobTemplate:
     spec:
       template:
         spec:
           containers:
           - name: cronimage
-            image: cronor:0.0.1
+            image:  microk8s:32000/cronor:0.0.1
             imagePullPolicy: Always
           restartPolicy: Never

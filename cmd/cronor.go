@@ -1,5 +1,5 @@
 /*
-Copyright 2017 The Kubernetes Authors.
+Copyright 2021 Johannes Hölzel.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Note: the example only works with the code within the same release/branch.
 package main
 
 import (
@@ -28,9 +27,6 @@ import (
 
 func main() {
 	var kubeconfig *string
-	var namespace *string
-	var strLocation *string
-	var deploymentName *string
 	if home := homedir.HomeDir(); home != "" {
 		//this will set the kubeconfig automatically if no path is given and the file exists
 		kubeconfig = flag.String("kubeconfig", filepath.Join(home, ".kube", "config"), "(optional) absolute path to the kubeconfig file")
@@ -38,9 +34,9 @@ func main() {
 		//otherwise we prepare for incluser load
 		kubeconfig = flag.String("kubeconfig", "", "(optional) absolute path to the kubeconfig file")
 	}
-	namespace = flag.String("namespace", "default", "namespace for the kubernetes deployments. example: default")
-	deploymentName = flag.String("name", "my-supercool-deployment", "Name for the deployment. example: my-supercool-deployment")
-	strLocation = flag.String("location", "Europe/Berlin", "location for the timezone setting. example: Europe/Berlin")
+	namespace := flag.String("namespace", "default", "namespace for the kubernetes deployments. example: default")
+	deploymentName := flag.String("name", "my-supercool-deployment", "Name for the deployment. example: my-supercool-deployment")
+	strLocation := flag.String("location", "Europe/Berlin", "location for the timezone setting. example: Europe/Berlin")
 	flag.Parse()
 	//prepare the timezone for correct timing
 	location, err := time.LoadLocation(*strLocation)

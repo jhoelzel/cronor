@@ -4,12 +4,13 @@ metadata:
   name: cron-{{.APP_NAME}}
 spec:
   schedule: "0 * * * *"
+  successfulJobsHistoryLimit: 0
   jobTemplate:
     spec:
       template:
         spec:
           containers:
           - name: cronimage
-            image: {{.IMAGE_NAME}}
+            image:  {{.CONTAINER_REPOSITORY}}/{{.IMAGE_NAME}}
             imagePullPolicy: Always
           restartPolicy: Never
