@@ -16,6 +16,7 @@ import (
 type Runner struct {
 	ActiveStart time.Time
 	ActiveEnd   time.Time
+	Now         time.Time
 	config      *rest.Config
 	clientset   *kubernetes.Clientset
 	namespace   string

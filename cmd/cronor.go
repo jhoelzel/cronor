@@ -50,6 +50,7 @@ func main() {
 	t := time.Now().In(location)
 	runner.ActiveStart = time.Date(t.Year(), t.Month(), t.Day(), 5, 0, 0, 0, t.Location())
 	runner.ActiveEnd = time.Date(t.Year(), t.Month(), t.Day(), 18, 0, 0, 0, t.Location())
+	runner.Now = t
 	err = runner.Run()
 	if err != nil {
 		panic(err.Error())

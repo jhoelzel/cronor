@@ -44,7 +44,7 @@ func (r *Runner) prepareDeployment() (err error) {
 		}
 	}
 
-	if inTimeSpan(r.ActiveStart, r.ActiveEnd) {
+	if inTimeSpan(r.ActiveStart, r.ActiveEnd, r.Now) {
 		r.demo.Dayli()
 	} else {
 		r.demo.Nightly()
